@@ -1,21 +1,36 @@
 package com.khalilpan.entity;
 
-public class student {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity //creating an entity
+@Table(name="student") //mapping this class(Entity) to a specific table (the table can has different name)
+public class student { 	
+
+	@Id //it makes this field Primary key
+	@GeneratedValue //activating auto increament for this field
+	@Column(name="id") //mapping this field to a specific column in table
 	private int id;
+	
+	@Column(name="firstname") //mapping this field to a specific column in table
 	private String firstName;
+	
+	@Column(name="lastname") //mapping this field to a specific column in table
 	private String lastName;
+	
+	@Column(name="email") //mapping this field to a specific column in table
 	private String email;
 	
 	
-	
+	//Empty constructor - in all the Entities we should declare an empty constructor
 	public student() {
-		super();
+
 	}
 
-	public student(int id, String firstName, String lastName, String email) {
-		super();
-		this.id = id;
+	public student(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -52,7 +67,10 @@ public class student {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+	}
 	
 }
