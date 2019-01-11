@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Table(name="student") //mapping this class(Entity) to a specific table (the table can has different name)
 public class student { 	
 
-	@Id //it makes this field Primary key
+	@Id //it makes this field Primary key and not null
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //activating auto increament for this field
 	@Column(name="id") //mapping this field to a specific column in table
 	private int id;
