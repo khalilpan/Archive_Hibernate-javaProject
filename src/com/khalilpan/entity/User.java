@@ -1,11 +1,15 @@
 package com.khalilpan.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -26,6 +30,10 @@ public class User {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private UserLog userLog;
+	
+	@OneToMany(mappedBy="user",cascade= {CascadeType.PERSIST,CascadeType.DETACH
+			,CascadeType.MERGE,CascadeType.REFRESH}) //"user" refers to user field in "course" class ,the name should be the same
+	private List<course> coursesList;
 
 	
 	
@@ -96,8 +104,38 @@ public class User {
 	public String toString() {
 		return "User [id=" + id + ", userName=" + userName + ", email=" + email + ", userLog_id=" + userLog + "]";
 	}
+
+
+
+
+	public List<course> getCoursesList() {
+		return coursesList;
+	}
+
+
+
+
+	public void setCoursesList(List<course> coursesList) {
+		this.coursesList = coursesList;
+	}
+
+
+
+
+	public void setUserLog(UserLog userLog) {
+		this.userLog = userLog;
+	}
 	
-	
+	//use to add a course to list
+	public void addCourse(course tempCourse) {
+		
+		if (this.coursesList == null) {
+			coursesList = new ArrayList<course>();			
+		}
+		
+		coursesList.add(tempCourse);
+		tempCourse.setUser(this);
+	}
 	
 
 }

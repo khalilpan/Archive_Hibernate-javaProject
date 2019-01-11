@@ -25,7 +25,7 @@ public class course {
 	@ManyToOne(cascade= {CascadeType.PERSIST,CascadeType.DETACH
 						,CascadeType.MERGE,CascadeType.REFRESH}) //to prevent to delete he user when deleting one course
 	@JoinColumn(name="userid") // "userid" is the name of field in table that is connected to user table 
-	private User user;
+	private User user; //this fiels will be user to connect to courseList fiekd in user class
 
 	public course() {
 		}
