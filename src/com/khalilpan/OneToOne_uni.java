@@ -51,20 +51,39 @@ public class OneToOne_uni {
 					
 					
 					//start the transaction
-					session.beginTransaction();
+//					session.beginTransaction();
 					
-					int tempUserId=2;
+//					int tempUserId=2;
 					
 					//retrieve user fromdatabase
-					User tempUser=session.get(User.class, tempUserId); //will return null if couldn't find the user
+//					User tempUser=session.get(User.class, tempUserId); //will return null if couldn't find the user
 					
 					//delete the user
-					if (tempUser!=null) {
-						session.delete(tempUser);
-						System.out.println("user deleted : "+tempUser);
-					}else {
-						System.out.println("user not found.");
-					}
+//					if (tempUser!=null) {
+//						session.delete(tempUser);
+//						System.out.println("user deleted : "+tempUser);
+//					}else {
+//						System.out.println("user not found.");
+//					}
+					
+					//commit transaction
+//					session.getTransaction().commit();
+					
+					//=======================================checking bi directional capabilities========
+					//try to access one user by logs information (Bi directional)
+					
+					int tempId = 4;
+					
+					//start the transaction
+					session.beginTransaction();
+					
+					//get the log of one id
+					UserLog tempUserLog = session.get(UserLog.class, tempId);
+					
+					//print the all information (user and userlog)
+					System.out.println("retreived user is : "+tempUserLog.getUser());
+					
+					
 					
 					//commit transaction
 					session.getTransaction().commit();
