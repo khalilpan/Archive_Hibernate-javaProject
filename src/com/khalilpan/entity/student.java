@@ -3,6 +3,7 @@ package com.khalilpan.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 public class student { 	
 
 	@Id //it makes this field Primary key
-	@GeneratedValue //activating auto increament for this field
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //activating auto increament for this field
 	@Column(name="id") //mapping this field to a specific column in table
 	private int id;
 	
@@ -38,10 +39,6 @@ public class student {
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
