@@ -24,6 +24,12 @@
 		<!-- Set the current session context -->
 		<property name="current_session_context_class">thread</property>
  
+ 		<!-- doesn`t work -->
+ 		<!-- turn on the Autocreating tables by hibernate -->
+ 		<!-- <property name="hibernate.hbm2ddl.auto"> create</property> -->
+ 		<!-- <property name="hibernate.hbm2ddl.auto">update</property> -->  
+ 		<!-- <property name="hibernate.hbm2ddl.auto" value="create"/> -->
+ 
     </session-factory>
 
 </hibernate-configuration>
