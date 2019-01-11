@@ -69,38 +69,38 @@ public class HibernateJavaProject {
 			// *"student" is the name of class in java ,not name of table in MySQL
 
 			// query from table //select * from student where firstname='khalil'
-			List<student> retrievedStudentsList2 = session
-					.createQuery("FROM student s WHERE s.firstName='khalil' AND s.id=3").getResultList();
+//			List<student> retrievedStudentsList2 = session.createQuery("FROM student s WHERE s.firstName='khalil' AND s.id=3").getResultList();
+					
 			// *"s.firstName" is the field name in object in java ,not the name of column in
 			// MySQL
 
 			// query from table //select * from student where firstname='khalil' or id=5
-			List<student> retrievedStudentsList3 = session
-					.createQuery("FROM student s WHERE s.firstName='khalil' OR s.id=5").getResultList();
+//			List<student> retrievedStudentsList3 = session.createQuery("FROM student s WHERE s.firstName='khalil' OR s.id=5").getResultList();
+					
 			// *"s.firstName" is the field name in object in java ,not the name of column in
 			// MySQL
 
 			// query from table //select * from student where email contain 'lil'
-			List<student> retrievedStudentsList4 = session.createQuery("FROM student s WHERE s.email LIKE '%lil%'")
-					.getResultList();
+//			List<student> retrievedStudentsList4 = session.createQuery("FROM student s WHERE s.email LIKE '%lil%'").getResultList();
+					
 			// *"s.firstName" is the field name in object in java ,not the name of column in
 			// MySQL
 
 			// printing the list
-			System.out.println("-----------------");
-			System.out.println("retrieved LIST4 is : " + retrievedStudentsList4);
+//			System.out.println("-----------------");
+//			System.out.println("retrieved LIST4 is : " + retrievedStudentsList4);
+
+			// printing the list
+//			System.out.println("-----------------");
+//			System.out.println("retrieved LIST3 is : " + retrievedStudentsList3);
+
+			// printing the list
+//			System.out.println("-----------------");
+//			System.out.println("retrieved LIST2 is : " + retrievedStudentsList2);
 
 			// printing the list
 			System.out.println("-----------------");
-			System.out.println("retrieved LIST3 is : " + retrievedStudentsList3);
-
-			// printing the list
-			System.out.println("-----------------");
-			System.out.println("retrieved LIST2 is : " + retrievedStudentsList2);
-
-			// printing the list
-			System.out.println("-----------------");
-			System.out.println("retrieved LIST1 is : " + retrievedStudentsList);
+			System.out.println("retrieved LIST is : " + retrievedStudentsList);
 
 			// commit the transaction
 			session.getTransaction().commit();
@@ -108,39 +108,66 @@ public class HibernateJavaProject {
 			// =====================================update===================================================
 
 			// getting the current session
-			session = sessionFactory.getCurrentSession();
+//			session = sessionFactory.getCurrentSession();
 
 			// start transaction
-			session.beginTransaction();
+//			session.beginTransaction();
 
-			int studentID = 5;
+//			int studentID = 5;
 
 			// retrieveng specific student from table to update
-			student studentToUpdate = session.get(student.class, studentID);
+//			student studentToUpdate = session.get(student.class, studentID);
 
 			// update the student
-			studentToUpdate.setFirstName("marcia");
-			studentToUpdate.setEmail("marcia@hotmail.com");
+//			studentToUpdate.setFirstName("marcia");
+//			studentToUpdate.setEmail("marcia@hotmail.com");
 
-			// another code just for updating all the rows //will update all the emails in table
-			session.createQuery("Update student set email='khalil@UpdatedEmail.com'").executeUpdate();
+			// another code just for updating all the rows //will update all the emails in
+			// table
+//			session.createQuery("Update student set email='khalil@UpdatedEmail.com'").executeUpdate();
 
 			// query from table //select * from student
-			List<student> retrievedStudentsList6 = session.createQuery("FROM student").getResultList();
+//			List<student> retrievedStudentsList6 = session.createQuery("FROM student").getResultList();
 
 			// retrieve and printing the updated user
-			System.out.println("-----------------");
-			System.out.println("updated table is : " + retrievedStudentsList6);
+//			System.out.println("-----------------");
+//			System.out.println("updated table is : " + retrievedStudentsList6);
 			// query from table //select * from student where firstname='khalil' or id=5
 
-			List<student> studentUpdated = session.createQuery("FROM student s WHERE s.id=5").getResultList();
+//			List<student> studentUpdated = session.createQuery("FROM student s WHERE s.id=5").getResultList();
 
 			// retrieve and printing the updated user
-			System.out.println("-----------------");
-			System.out.println("updated user is : " + studentUpdated);
+//			System.out.println("-----------------");
+//			System.out.println("updated user is : " + studentUpdated);
 
 			// commit the changes(transaction)
-			session.getTransaction().commit();
+//			session.getTransaction().commit();
+
+			// ==========================================delete========================================
+
+			// getting the current session
+//			session = sessionFactory.getCurrentSession();
+
+			// start transaction
+//			session.beginTransaction();
+
+//			int studentID = 6;
+
+			// retrieveng specific student from table to update to delete
+//			student studentToDelete = session.get(student.class, studentID);
+			
+			//delete the student
+//			session.delete(studentToDelete);
+			
+			//print the deleted student
+//			System.out.println("Studen deleted : "+ studentToDelete);
+			
+			//another way for execute one delete query on table
+//			session.createQuery("DELETE FROM student WHERE id=8").executeUpdate();
+//			System.out.println("student deleted.");
+			
+			// commit the changes(transaction)
+//			session.getTransaction().commit();
 
 		} finally {
 			sessionFactory.close();
