@@ -14,10 +14,8 @@ public class HibernateJavaProject {
 	public static void main(String[] args) {
 
 		// create session factory
-		SessionFactory sessionFactory = new Configuration()
-													.configure("hibernate.cfg.xml")
-													.addAnnotatedClass(student.class)
-													.buildSessionFactory();
+		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
+				.addAnnotatedClass(student.class).buildSessionFactory();
 
 		// create session
 		Session session = sessionFactory.getCurrentSession();
@@ -72,19 +70,19 @@ public class HibernateJavaProject {
 
 			// query from table //select * from student where firstname='khalil'
 //			List<student> retrievedStudentsList2 = session.createQuery("FROM student s WHERE s.firstName='khalil' AND s.id=3").getResultList();
-					
+
 			// *"s.firstName" is the field name in object in java ,not the name of column in
 			// MySQL
 
 			// query from table //select * from student where firstname='khalil' or id=5
 //			List<student> retrievedStudentsList3 = session.createQuery("FROM student s WHERE s.firstName='khalil' OR s.id=5").getResultList();
-					
+
 			// *"s.firstName" is the field name in object in java ,not the name of column in
 			// MySQL
 
 			// query from table //select * from student where email contain 'lil'
 //			List<student> retrievedStudentsList4 = session.createQuery("FROM student s WHERE s.email LIKE '%lil%'").getResultList();
-					
+
 			// *"s.firstName" is the field name in object in java ,not the name of column in
 			// MySQL
 
@@ -157,21 +155,26 @@ public class HibernateJavaProject {
 
 			// retrieveng specific student from table to update to delete
 //			student studentToDelete = session.get(student.class, studentID);
-			
-			//delete the student
+
+			// delete the student
 //			session.delete(studentToDelete);
-			
-			//print the deleted student
+
+			// print the deleted student
 //			System.out.println("Studen deleted : "+ studentToDelete);
-			
-			//another way for execute one delete query on table
+
+			// another way for execute one delete query on table
 //			session.createQuery("DELETE FROM student WHERE id=8").executeUpdate();
 //			System.out.println("student deleted.");
-			
+
 			// commit the changes(transaction)
 //			session.getTransaction().commit();
 
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
+
+			session.close();
+
 			sessionFactory.close();
 		}
 
