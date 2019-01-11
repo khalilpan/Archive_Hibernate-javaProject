@@ -14,8 +14,10 @@ public class HibernateJavaProject {
 	public static void main(String[] args) {
 
 		// create session factory
-		SessionFactory sessionFactory = new Configuration().configure("hibernate.cfg.xml")
-				.addAnnotatedClass(student.class).buildSessionFactory();
+		SessionFactory sessionFactory = new Configuration()
+													.configure("hibernate.cfg.xml")
+													.addAnnotatedClass(student.class)
+													.buildSessionFactory();
 
 		// create session
 		Session session = sessionFactory.getCurrentSession();
